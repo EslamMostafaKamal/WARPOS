@@ -1,0 +1,6 @@
+{
+  "name": "LedgerFlow POS & ERP",
+  "description": "Small business Point of Sale, Inventory Management, Purchasing, CRM, and Accounting workspace.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

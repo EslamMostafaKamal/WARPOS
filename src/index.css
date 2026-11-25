@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Public Sans", "Cairo", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Cairo", "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: #f4f6f9;
+    color: #0f172a;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html[dir="rtl"],
+  html[dir="rtl"] body {
+    font-family: "Cairo", "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+
+  html[dir="rtl"] .font-display {
+    font-family: "Cairo", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  button,
+  a,
+  select,
+  input,
+  textarea {
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.25);
+    }
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle thin scrollbars for dense tables & POS panels */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.65);
+}
+
+/* Clean print layout for POS Receipt & Executive Audit PDF */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-receipt,
+  #printable-receipt *,
+  #printable-audit-report,
+  #printable-audit-report * {
+    visibility: visible;
+  }
+
+  #printable-receipt {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 320px;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 8px !important;
+  }
+
+  #printable-audit-report {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 16px !important;
+    background: #ffffff !important;
+  }
+}
